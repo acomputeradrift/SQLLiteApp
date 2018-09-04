@@ -14,6 +14,7 @@
 		7DB11405213F02980066CD3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11404213F02980066CD3B /* Assets.xcassets */; };
 		7DB11408213F02980066CD3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11406213F02980066CD3B /* LaunchScreen.storyboard */; };
 		7DB11414213F05290066CD3B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11413213F05290066CD3B /* DataManager.swift */; };
+		7DB11417213F0C1D0066CD3B /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11416213F0C1D0066CD3B /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		7DB11407213F02980066CD3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DB11409213F02980066CD3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DB11413213F05290066CD3B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = /Users/Jamie/Desktop/C/SQLiteApp/SQLiteApp/DataManager.swift; sourceTree = "<absolute>"; };
+		7DB11416213F0C1D0066CD3B /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		B62658B65F7C447002AC2DDF /* Pods-SQLiteApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SQLiteApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SQLiteApp/Pods-SQLiteApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				7DB11413213F05290066CD3B /* DataManager.swift */,
+				7DB11416213F0C1D0066CD3B /* Person.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			files = (
 				7DB11400213F02970066CD3B /* ViewController.swift in Sources */,
 				7DB11414213F05290066CD3B /* DataManager.swift in Sources */,
+				7DB11417213F0C1D0066CD3B /* Person.swift in Sources */,
 				7DB113FE213F02970066CD3B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

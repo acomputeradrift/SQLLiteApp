@@ -8,37 +8,39 @@
 import Foundation
 import FMDB
 
-    // 1
-    enum DatabaseError: Error {
-        case open
-        case executeStatement
+// 1
+enum DatabaseError: Error {
+    case open
+    case executeStatement
+}
+
+class Database {
+    
+    // 2
+    let db: FMDatabase
+    
+    init() throws {
+        // 3
+        let dbName = "database.db"
+        let fileURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(dbName)
+        
+        // 4
+        db = FMDatabase(url: fileURL)
+        if !db.open() {
+            throw DatabaseError.open
+        }
     }
     
-    class Database {
-        
-        // 2
-        let db: FMDatabase
-        
-        init() throws {
-            // 3
-            let dbName = "database.db"
-            let fileURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(dbName)
-            
-            // 4
-            db = FMDatabase(url: fileURL)
-            if !db.open() {
-                throw DatabaseError.open
-            }
-        }
-        
-        deinit {
-            // 5
-            db.close()
-        }
-        
-        func setupTables() throws {
-            // 1
-            let sql = """
+    deinit {
+        // 5
+        db.close()
+    }
+    
+    
+    
+    func setupTables() throws {
+        // 1
+        let sql = """
     CREATE TABLE famous_people (
       id INTEGER PRIMARY KEY,
       first_name VARCHAR(50),
@@ -53,11 +55,44 @@ import FMDB
     INSERT INTO famous_people (first_name, last_name, birthdate)
       VALUES ('Paul', 'Rudd', '1969-04-06');
   """
-            
-            // 2
-            if !db.executeStatements(sql) {
-                throw DatabaseError.executeStatement
-            }
+        
+        // 2
+        if !db.executeStatements(sql) {
+            throw DatabaseError.executeStatement
         }
     }
+    
+    
+    func getAllFamousPeople() throws -> [Person] {
+        // 1
+        let sql = """
+    SELECT * FROM famous_people
+    ORDER BY birthdate ASC;
+  """
+        
+        // 2
+        var people = [Person]()
+        
+        // 3
+        let resultSet = try db.executeQuery(sql, values: nil)
+        
+        // 4
+        while (resultSet.next()) {
+            //retrieve values for each record
+            // 5
+            let person = Person()
+            
+            // 6
+            person.firstName = resultSet.string(forColumn: "first_name")
+            person.lastName = resultSet.string(forColumn: "last_name")
+            person.birthdate = resultSet.string(forColumn: "birthdate")
+            
+            // 7
+            people.append(person)
+        }
+        
+        // 8
+        return people;
+    }
+}
 
